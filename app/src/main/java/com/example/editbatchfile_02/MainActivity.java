@@ -36,14 +36,32 @@ public class MainActivity extends AppCompatActivity {
     private String previewTvContent = "";
     private ArrayList<ArrayList<Integer>> ratioList = new ArrayList<ArrayList<Integer>>();
 
+    private ArrayList<Integer> ratioNum = new ArrayList<Integer>();
+    private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestMediaPermission();
         implementContents();
+        addRatioUserWant();
         showPreviewText();
         generateBatchText();
+    }
+
+    private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
+        ratioNum.add(2);
+        ratioNum.add(4);
+        ratioNum.add(8);
+        ratioNum.add(16);
+        ratioNum.add(32);
+
+        ArrayList<Integer> customRatio01 = new ArrayList<Integer>();
+        customRatio01.add(1);
+        customRatio01.add(32);
+        customRatio01.add(256);
+        customRatio.add(customRatio01);
     }
 
     private void requestMediaPermission() {
@@ -91,11 +109,15 @@ public class MainActivity extends AppCompatActivity {
     private void calculateRatioList() {
         int middleValue = Integer.parseInt(middleEt.getText().toString());
 
-        ratioList.add(Scaling.scaling_list(middleValue, 2));
-        ratioList.add(Scaling.scaling_list(middleValue, 4));
-        ratioList.add(Scaling.scaling_list(middleValue, 8));
-        ratioList.add(Scaling.scaling_list(middleValue, 16));
-        ratioList.add(Scaling.scaling_list(middleValue, 32));
+        for(int i = 0; i < ratioNum.size(); i++) {
+            ratioList.add(Scaling.scaling_list(middleValue, ratioNum.get(i)));
+        }
+
+        if(customRatio.size()!=0){
+            for(int i = 0; i < customRatio.size(); i++) {
+                ratioList.add(Scaling.custom_scaling_list(middleValue, customRatio.get(i)));
+            }
+        }
     }
 
     public static class Scaling {
@@ -113,6 +135,30 @@ public class MainActivity extends AppCompatActivity {
             for( int i = 0; i < scale_list.size(); i++) {
                 int top = scale_list.get(i) * ratio;
                 int bot = (int)(scale_list.get(i) / ratio);
+                int middle = scale_list.get(i);
+
+                scale_list_buffer.add(bot);
+                scale_list_buffer.add(middle);
+                scale_list_buffer.add(top);
+            }
+
+            return scale_list_buffer;
+        }
+
+        public static ArrayList<Integer> custom_scaling_list(int middleValue, ArrayList<Integer> custom_list) {
+            ArrayList<Integer> scale_list = new ArrayList<Integer>();
+            scale_list.add((int)(middleValue * 0.1));
+            scale_list.add((int)(middleValue * 0.4));
+            scale_list.add((int)(middleValue * 0.7));
+            scale_list.add((int)(middleValue * 1));
+            scale_list.add((int)(middleValue * 1.3));
+            scale_list.add((int)(middleValue * 1.6));
+            scale_list.add((int)(middleValue * 1.9));
+
+            ArrayList<Integer> scale_list_buffer = new ArrayList<Integer>();
+            for( int i = 0; i < scale_list.size(); i++) {
+                int top = scale_list.get(i) * (custom_list.get(2) / custom_list.get(1));
+                int bot = (int)(scale_list.get(i) / (custom_list.get(1) / custom_list.get(0)));
                 int middle = scale_list.get(i);
 
                 scale_list_buffer.add(bot);

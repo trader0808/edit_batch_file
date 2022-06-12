@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                     || checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    Toast.makeText(this, "외부 저장소 사용을 위해 읽기/쓰기 필요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.request_permission_toast, Toast.LENGTH_SHORT).show();
                 }
 
                 requestPermissions(new String[]
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "previewTVcontent : " + previewTvContent);
                     clearValueOnUsedParameters();
                 } else {
-                    Toast.makeText(getApplicationContext(), "check if focus, iso, shutter is filled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.validation_check_toast, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     makeBatchFile();
                     clearValueOnUsedParameters();
                 } else {
-                    Toast.makeText(getApplicationContext(), "check if focus, iso, shutter is filled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.validation_check_toast, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -222,11 +222,11 @@ public class MainActivity extends AppCompatActivity {
             buf.write("No\tFocus\tISO\tShutter\n" + previewTvContent );
             buf.newLine();
             buf.close();
-            Toast.makeText(getApplicationContext(), "batchfile generated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.batch_file_generated_toast, Toast.LENGTH_SHORT).show();
             uriTV.setText(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
         } catch (Exception e) {
             Log.e(TAG, "onClick: Cant write the batch");
-            Toast.makeText(getApplicationContext(), "check app permission. it needs 모든 파일 관리 허용", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.batch_file_generation_fail_toast, Toast.LENGTH_LONG).show();
             e.printStackTrace();
             finish();
         }

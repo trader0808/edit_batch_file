@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">editBatchFile_V2</string>
+    <string name="batch_file_generated_toast">batchfile generated</string>
+    <string name="batch_file_generation_fail_toast">check app permission. it needs 모든 파일 관리 허용</string>
+    <string name="validation_check_toast">check if focus, iso, shutter is filled</string>
+    <string name="request_permission_toast">외부 저장소 사용을 위해 읽기/쓰기 필요</string>
 </resources>

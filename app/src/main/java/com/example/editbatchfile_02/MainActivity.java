@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = batchEditDef.batchEditTag;
@@ -99,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     makeValueOnPreviewTvContent();
                     previewTv.setText(previewTvContent);
                     Log.d(TAG, "previewTVcontent : " + previewTvContent);
+                    clearValueOnUsedParameters();
                 } else {
                     Toast.makeText(getApplicationContext(), "check if focus, iso, shutter is filled", Toast.LENGTH_SHORT).show();
                 }
@@ -186,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
         previewTvContent = previewTvContent.substring(0, previewTvContent.length()-1);
     }
 
+    private void clearValueOnUsedParameters() {
+        previewTvContent = previewTvContent.substring(0,0);
+        ratioList.clear();
+    }
+
     private String intToStr(int i) {
         return String.valueOf(i);
     }
@@ -201,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     previewTv.setText(previewTvContent);
                     Log.d(TAG, "previewTVcontent : " + previewTvContent);
                     makeBatchFile();
+                    clearValueOnUsedParameters();
                 } else {
                     Toast.makeText(getApplicationContext(), "check if focus, iso, shutter is filled", Toast.LENGTH_SHORT).show();
                 }

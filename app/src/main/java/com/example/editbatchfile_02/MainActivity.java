@@ -167,14 +167,15 @@ public class MainActivity extends AppCompatActivity {
         File batchFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
 
         try {
-            Toast.makeText(getApplicationContext(), "batchfile generated", Toast.LENGTH_SHORT).show();
             BufferedWriter buf = new BufferedWriter(new FileWriter(batchFile));
             buf.write("No\tFocus\tISO\tShutter\n" + previewTvContent );
             buf.newLine();
             buf.close();
+            Toast.makeText(getApplicationContext(), "batchfile generated", Toast.LENGTH_SHORT).show();
             uriTV.setText(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
         } catch (Exception e) {
             Log.e(TAG, "onClick: Cant write the batch");
+            Toast.makeText(getApplicationContext(), "check app permission. it needs 모든 파일 관리 허용", Toast.LENGTH_LONG).show();
             e.printStackTrace();
             finish();
         }

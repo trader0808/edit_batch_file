@@ -2,6 +2,7 @@ package com.example.editbatchfile_02;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText focusEt;
     private EditText isoEt;
     private TextView previewTv;
+    private TextView uriTV;
     private Button previewBtn;
     private Button generateBtn;
 
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         focusEt = findViewById(R.id.focus_et);
         isoEt = findViewById(R.id.iso_et);
         previewTv = findViewById(R.id.preview_tv);
+        uriTV = findViewById(R.id.uri_tv);
         previewBtn = findViewById(R.id.preview_btn);
         generateBtn = findViewById(R.id.generate_btn);
     }
@@ -142,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void makeBatchFile() {
         File batchFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
 
@@ -151,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             buf.write("No\tFocus\tISO\tShutter\n" + previewTvContent );
             buf.newLine();
             buf.close();
+            uriTV.setText(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
         } catch (Exception e) {
             Log.e(TAG, "onClick: Cant write the batch");
             e.printStackTrace();

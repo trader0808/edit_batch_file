@@ -70,7 +70,23 @@
         <TextView
             android:id="@+id/preview_tv"
             style="@style/preview_tv_style"
-            android:layout_height="600dp" />
+            android:layout_height="480dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/uri_tv_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/preview_tv_layout"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <View style="@style/paddingView" />
+
+        <TextView
+            android:id="@+id/uri_tv"
+            style="@style/preview_tv_style" />
 
     </LinearLayout>
 
@@ -78,8 +94,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_below="@id/preview_tv_layout"
-        android:layout_marginTop="30dp">
+        android:layout_below="@id/uri_tv_layout"
+        android:layout_marginTop="10dp">
 
         <View
             style="@style/paddingView" />

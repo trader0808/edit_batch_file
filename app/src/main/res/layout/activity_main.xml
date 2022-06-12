@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:id="@+id/editorTitle">
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            style="@style/batchTitleTV"
+            android:text="FOCUS"/>
+
+        <TextView
+            style="@style/batchTitleTV"
+            android:text="ISO"/>
+
+        <TextView
+            style="@style/batchTitleTV"
+            android:text="Shutter"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editorTitle"
+        android:orientation="horizontal"
+        android:id="@+id/batchEditLine01">
+
+        <View
+            style="@style/paddingView" />
+
+        <EditText
+            style="@style/batchET"
+            android:layout_width="70dp"
+            android:id="@+id/focus_et"
+            android:nextFocusDown="@id/iso_et"/>
+
+        <EditText
+            style="@style/batchET"
+            android:layout_width="70dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/iso_et"
+            android:nextFocusDown="@id/middle_et"/>
+
+        <EditText
+            style="@style/batchET"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/middle_et" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/preview_tv_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/batchEditLine01"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <View style="@style/paddingView" />
+
+        <TextView
+            android:id="@+id/preview_tv"
+            style="@style/preview_tv_style"
+            android:layout_height="600dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/preview_tv_layout"
+        android:layout_marginTop="30dp">
+
+        <View
+            style="@style/paddingView" />
+
+        <Button
+            style="@style/button_style"
+            android:text="Show In\nTextBox"
+            android:id="@+id/preview_btn"/>
+
+        <Button
+            android:layout_marginLeft="10dp"
+            style="@style/button_style"
+            android:text="Generate Batch"
+            android:id="@+id/generate_btn"/>
+
+    </LinearLayout>
+</RelativeLayout>

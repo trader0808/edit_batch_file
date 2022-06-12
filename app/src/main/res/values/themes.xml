@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.EditBatchFile" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name = "batchTitleTV">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name = "button_style">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name = "batchET">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name = "batchRadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name ="paddingView">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="preview_tv_style">
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:background">@drawable/textview_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+</resources>

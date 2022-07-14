@@ -121,15 +121,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(customRatio_02.size()!=0){
+
+            int middleIndex = (int)(customRatio_02.size()/2);
+
             for(int j = 0; j < 150; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i), customRatio_02.get(3)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
 
             for(int j = 0; j < 150; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(3)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
         }

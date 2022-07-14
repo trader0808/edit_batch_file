@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Integer> ratioNum = new ArrayList<Integer>();
     private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
+    private ArrayList<ArrayList<Integer>> customRatio_02 = new ArrayList<ArrayList<Integer>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
-        ratioNum.add(2);
-        ratioNum.add(4);
-        ratioNum.add(8);
-        ratioNum.add(16);
-        ratioNum.add(32);
-
         ArrayList<Integer> customRatio01 = new ArrayList<Integer>();
         customRatio01.add(1);
         customRatio01.add(32);
@@ -108,8 +103,10 @@ public class MainActivity extends AppCompatActivity {
     private void calculateRatioList() {
         int middleValue = Integer.parseInt(middleEt.getText().toString());
 
-        for(int i = 0; i < ratioNum.size(); i++) {
-            ratioList.add(Scaling.scaling_list(middleValue, ratioNum.get(i)));
+        if(ratioNum.size()!=0){
+            for(int i = 0; i < ratioNum.size(); i++) {
+                ratioList.add(Scaling.scaling_list(middleValue, ratioNum.get(i)));
+            }
         }
 
         if(customRatio.size()!=0){

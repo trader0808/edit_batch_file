@@ -123,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
         if(customRatio_02.size()!=0){
             for(int j = 0; j < 150; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i), customRatio_02.get(3)));
                 }
             }
 
             for(int j = 0; j < 150; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(3)));
                 }
             }
         }
@@ -184,26 +184,10 @@ public class MainActivity extends AppCompatActivity {
             return scale_list_buffer;
         }
 
-        public static ArrayList<Integer> custom_scaling_list_02(int middleValue, int custom_list_02_ratio) {
-            ArrayList<Integer> scale_list = new ArrayList<Integer>();
-            scale_list.add((int)(middleValue * 0.1));
-            scale_list.add((int)(middleValue * 0.4));
-            scale_list.add((int)(middleValue * 0.7));
-            scale_list.add((int)(middleValue * 1));
-            scale_list.add((int)(middleValue * 1.3));
-            scale_list.add((int)(middleValue * 1.6));
-            scale_list.add((int)(middleValue * 1.9));
+        public static ArrayList<Integer> custom_scaling_list_02(int middleValue, int custom_list_02_ratio, int custom_list_02_middle_ratio) {
 
             ArrayList<Integer> scale_list_buffer = new ArrayList<Integer>();
-            for( int i = 0; i < scale_list.size(); i++) {
-                int top = scale_list.get(i) * (custom_list_02.get(2) / custom_list_02.get(1));
-                int bot = (int)(scale_list.get(i) / (custom_list_02.get(1) / custom_list_02.get(0)));
-                int middle = scale_list.get(i);
-
-                scale_list_buffer.add(bot);
-                scale_list_buffer.add(middle);
-                scale_list_buffer.add(top);
-            }
+            scale_list_buffer.add((int)(middleValue * (custom_list_02_ratio) / custom_list_02_middle_ratio));
 
             return scale_list_buffer;
         }

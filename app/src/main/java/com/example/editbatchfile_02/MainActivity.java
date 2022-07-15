@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button generateBtn;
 
     private String previewTvContent = "";
-    private ArrayList<ArrayList<Integer>> ratioList = new ArrayList<ArrayList<Integer>>();
+    private ArrayList<ArrayList<Long>> ratioList = new ArrayList<ArrayList<Long>>();
 
     private ArrayList<Integer> ratioNum = new ArrayList<Integer>();
     private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
@@ -149,21 +149,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static class Scaling {
-        public static ArrayList<Integer> scaling_list(int middleValue, int ratio) {
-            ArrayList<Integer> scale_list = new ArrayList<Integer>();
-            scale_list.add((int)(middleValue * 0.1));
-            scale_list.add((int)(middleValue * 0.4));
-            scale_list.add((int)(middleValue * 0.7));
-            scale_list.add((int)(middleValue * 1));
-            scale_list.add((int)(middleValue * 1.3));
-            scale_list.add((int)(middleValue * 1.6));
-            scale_list.add((int)(middleValue * 1.9));
+        public static ArrayList<Long> scaling_list(int middleValue, int ratio) {
+            ArrayList<Long> scale_list = new ArrayList<Long>();
+            scale_list.add((long)(middleValue * 0.1));
+            scale_list.add((long)(middleValue * 0.4));
+            scale_list.add((long)(middleValue * 0.7));
+            scale_list.add((long)(middleValue * 1));
+            scale_list.add((long)(middleValue * 1.3));
+            scale_list.add((long)(middleValue * 1.6));
+            scale_list.add((long)(middleValue * 1.9));
 
-            ArrayList<Integer> scale_list_buffer = new ArrayList<Integer>();
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
             for( int i = 0; i < scale_list.size(); i++) {
-                int top = scale_list.get(i) * ratio;
-                int bot = (int)(scale_list.get(i) / ratio);
-                int middle = scale_list.get(i);
+                long top = scale_list.get(i) * ratio;
+                long bot = (long)(scale_list.get(i) / ratio);
+                long middle = scale_list.get(i);
 
                 scale_list_buffer.add(bot);
                 scale_list_buffer.add(middle);
@@ -173,21 +173,21 @@ public class MainActivity extends AppCompatActivity {
             return scale_list_buffer;
         }
 
-        public static ArrayList<Integer> custom_scaling_list(int middleValue, ArrayList<Integer> custom_list) {
-            ArrayList<Integer> scale_list = new ArrayList<Integer>();
-            scale_list.add((int)(middleValue * 0.1));
-            scale_list.add((int)(middleValue * 0.4));
-            scale_list.add((int)(middleValue * 0.7));
-            scale_list.add((int)(middleValue * 1));
-            scale_list.add((int)(middleValue * 1.3));
-            scale_list.add((int)(middleValue * 1.6));
-            scale_list.add((int)(middleValue * 1.9));
+        public static ArrayList<Long> custom_scaling_list(int middleValue, ArrayList<Integer> custom_list) {
+            ArrayList<Long> scale_list = new ArrayList<Long>();
+            scale_list.add((long)(middleValue * 0.1));
+            scale_list.add((long)(middleValue * 0.4));
+            scale_list.add((long)(middleValue * 0.7));
+            scale_list.add((long)(middleValue * 1));
+            scale_list.add((long)(middleValue * 1.3));
+            scale_list.add((long)(middleValue * 1.6));
+            scale_list.add((long)(middleValue * 1.9));
 
-            ArrayList<Integer> scale_list_buffer = new ArrayList<Integer>();
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
             for( int i = 0; i < scale_list.size(); i++) {
-                int top = scale_list.get(i) * (custom_list.get(2) / custom_list.get(1));
-                int bot = (int)(scale_list.get(i) / (custom_list.get(1) / custom_list.get(0)));
-                int middle = scale_list.get(i);
+                long top = scale_list.get(i) * (custom_list.get(2) / custom_list.get(1));
+                long bot = (long)(scale_list.get(i) / (custom_list.get(1) / custom_list.get(0)));
+                long middle = scale_list.get(i);
 
                 scale_list_buffer.add(bot);
                 scale_list_buffer.add(middle);
@@ -197,10 +197,10 @@ public class MainActivity extends AppCompatActivity {
             return scale_list_buffer;
         }
 
-        public static ArrayList<Integer> custom_scaling_list_02(int middleValue, int custom_list_02_ratio, int custom_list_02_middle_ratio) {
+        public static ArrayList<Long> custom_scaling_list_02(int middleValue, int custom_list_02_ratio, int custom_list_02_middle_ratio) {
 
-            ArrayList<Integer> scale_list_buffer = new ArrayList<Integer>();
-            scale_list_buffer.add((int)(middleValue * (custom_list_02_ratio) / custom_list_02_middle_ratio));
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
+            scale_list_buffer.add((long)((long) middleValue * (custom_list_02_ratio) / custom_list_02_middle_ratio));
 
             return scale_list_buffer;
         }

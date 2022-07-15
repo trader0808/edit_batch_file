@@ -138,6 +138,14 @@ public class MainActivity extends AppCompatActivity {
                 countNum = Integer.parseInt(countEt.getText().toString());
             }
 
+            if(!weight01Et.getText().toString().equals("")) {
+                middleNumWeight01 = Double.parseDouble(weight01Et.getText().toString());
+            }
+
+            if(!weight02Et.getText().toString().equals("")) {
+                middleNumWeight02 = Double.parseDouble(weight02Et.getText().toString());
+            }
+
             for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
                     ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight01), customRatio_02.get(i), customRatio_02.get(middleIndex)));

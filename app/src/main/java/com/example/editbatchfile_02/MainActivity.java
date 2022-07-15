@@ -136,13 +136,13 @@ public class MainActivity extends AppCompatActivity {
 
             for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
 
             for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 2.0), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
         }

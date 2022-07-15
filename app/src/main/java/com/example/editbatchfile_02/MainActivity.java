@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
 
     private ArrayList<Integer> customRatio_02 = new ArrayList<Integer>();
-    private double middleNumWeight01 = 1.3;
-    private double middleNumWeight02 = 1.6;
+    private double middleNumWeight01 = 1.6;
+    private double middleNumWeight02 = 2.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,13 +136,13 @@ public class MainActivity extends AppCompatActivity {
 
             for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight01), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
 
             for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 2.0), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight02), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
         }

@@ -104,6 +104,7 @@
             style="@style/batchET"
             android:layout_width="70dp"
             android:layout_marginLeft="30dp"
+            android:inputType="none"
             android:id="@+id/weight01_et"
             android:nextFocusDown="@id/weight02_et"/>
 
@@ -111,6 +112,7 @@
             style="@style/batchET"
             android:layout_width="70dp"
             android:layout_marginLeft="30dp"
+            android:inputType="none"
             android:id="@+id/weight02_et" />
 
     </LinearLayout>

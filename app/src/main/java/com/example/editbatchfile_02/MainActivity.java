@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText focusEt;
     private EditText isoEt;
     private EditText countEt;
+    private EditText weight01Et;
+    private EditText weight02Et;
     private TextView previewTv;
     private TextView uriTV;
     private Button previewBtn;
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         focusEt = findViewById(R.id.focus_et);
         isoEt = findViewById(R.id.iso_et);
         countEt = findViewById(R.id.count_et);
+        weight01Et = findViewById(R.id.weight01_et);
+        weight02Et = findViewById(R.id.weight02_et);
         previewTv = findViewById(R.id.preview_tv);
         uriTV = findViewById(R.id.uri_tv);
         previewBtn = findViewById(R.id.preview_btn);

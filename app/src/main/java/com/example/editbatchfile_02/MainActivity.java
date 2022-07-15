@@ -126,14 +126,21 @@ public class MainActivity extends AppCompatActivity {
         if(customRatio_02.size()!=0){
 
             int middleIndex = (int)(customRatio_02.size()/2);
+            int countNum;
 
-            for(int j = 0; j < 150; j++) {
+            if(countEt.getText().toString().equals("")) {
+                countNum = 150;
+            }else{
+                countNum = Integer.parseInt(countEt.getText().toString());
+            }
+
+            for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
                     ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.3), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }
             }
 
-            for(int j = 0; j < 150; j++) {
+            for(int j = 0; j < countNum; j++) {
                 for(int i = 0; i <customRatio_02.size();i++) {
                     ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * 1.6), customRatio_02.get(i), customRatio_02.get(middleIndex)));
                 }

@@ -332,6 +332,26 @@ public class EditBatchFileFloatingService extends Service {
         }
     }
 
+    private void makeValueOnPreviewTvContent() {
+        String strFocus = focusFloatingET.getText().toString();
+        String strISO = isoFloatingET.getText().toString();
+        int count = 0;
+        int one_element_len = ratioList.get(0).size();
+
+        for (int i = 0; i < ratioList.size(); i++) {
+            for (int j = 0; j < one_element_len; j++) {
+                count += 1;
+                previewTvContent += intToStr(count) + "\t" + strFocus + "\t" + strISO + "\t" + ratioList.get(i).get(j) + "\n";
+            }
+        }
+
+        previewTvContent = previewTvContent.substring(0, previewTvContent.length()-1);
+    }
+
+    private String intToStr(int i) {
+        return String.valueOf(i);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

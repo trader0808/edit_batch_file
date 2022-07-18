@@ -78,6 +78,7 @@ public class EditBatchFileFloatingService extends Service {
         implementFloatingContents();
         implementEvent ();
         addRatioUserWant();
+        generateBatchText();
     }
 
     private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
@@ -229,6 +230,25 @@ public class EditBatchFileFloatingService extends Service {
                 return false;
             }
         });;
+    }
+
+    private void generateBatchText() {
+        generateBatchFloatingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkIfFullET(isoFloatingET) && checkIfFullET(focusFloatingET) && checkIfFullET(middleFloatingET)) {
+                    calculateRatioList();
+                    Log.d(TAG, "ratioList : " + ratioList);
+                    makeValueOnPreviewTvContent();
+                    previewFloatingTV.setText(previewTvContent);
+                    Log.d(TAG, "previewTVcontent : " + previewTvContent);
+                    makeBatchFile();
+                    clearValueOnUsedParameters();
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.validation_check_toast, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void calculateRatioList() {

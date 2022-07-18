@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class EditBatchFileFloatingService extends Service {
@@ -350,6 +355,23 @@ public class EditBatchFileFloatingService extends Service {
 
     private String intToStr(int i) {
         return String.valueOf(i);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void makeBatchFile() {
+        File batchFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + "batch_created.txt");
+
+        try {
+            BufferedWriter buf = new BufferedWriter(new FileWriter(batchFile));
+            buf.write("No\tFocus\tISO\tShutter\n" + previewTvContent );
+            buf.newLine();
+            buf.close();
+            Toast.makeText(getApplicationContext(), R.string.batch_file_generated_toast, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e(TAG, "onClick: Cant write the batch");
+            Toast.makeText(getApplicationContext(), R.string.batch_file_generation_fail_toast, Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
 
     @Override

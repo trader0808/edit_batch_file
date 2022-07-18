@@ -78,6 +78,7 @@ public class EditBatchFileFloatingService extends Service {
 
     private void implementEvent () {
         implementEventForMovingPopup();
+        implementEventForCloseButton();
     }
 
     private void implementFloatingContents () {
@@ -112,6 +113,15 @@ public class EditBatchFileFloatingService extends Service {
                 }
                 v.performClick();
                 return false;
+            }
+        });
+    }
+
+    private void implementEventForCloseButton () {
+        closeViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onDestroy();
             }
         });
     }

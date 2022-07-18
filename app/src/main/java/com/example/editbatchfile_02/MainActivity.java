@@ -1,13 +1,19 @@
 package com.example.editbatchfile_02;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView uriTV;
     private Button previewBtn;
     private Button generateBtn;
+    private Button floatingBtn;
+
+    private Intent tuningGeneralIntent = null;
 
     private String previewTvContent = "";
     private ArrayList<ArrayList<Long>> ratioList = new ArrayList<ArrayList<Long>>();
@@ -53,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         addRatioUserWant();
         showPreviewText();
         generateBatchText();
+        floatingActivityStart();
     }
 
     private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
@@ -91,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         uriTV = findViewById(R.id.uri_tv);
         previewBtn = findViewById(R.id.preview_btn);
         generateBtn = findViewById(R.id.generate_btn);
+        floatingBtn = findViewById(R.id.floating_btn);
     }
 
     private void showPreviewText() {
@@ -285,4 +296,41 @@ public class MainActivity extends AppCompatActivity {
         return !editText.getText().toString().equals("");
     }
 
+    private void floatingActivityStart() {
+        floatingBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View view) {
+                if (checkOverlayDisplayPermission()) {
+                    if (tuningGeneralIntent == null) {
+                        tuningGeneralIntent = new Intent(MainActivity.this, EditBatchFileFloatingService.class);
+                    }
+                    startService(tuningGeneralIntent);
+                } else {
+                    requestOverlayDisplayPermission();
+                }
+            }
+        });
+    }
+
+    private void requestOverlayDisplayPermission() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Screen Overlay Permission Needed");
+        builder.setMessage("Enable 'Display over other apps' from System Settings.");
+        builder.setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, RESULT_OK);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean checkOverlayDisplayPermission() {
+        return Settings.canDrawOverlays(this);
+    }
 }

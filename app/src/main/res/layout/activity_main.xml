@@ -171,5 +171,11 @@
             android:text="Generate Batch"
             android:id="@+id/generate_btn"/>
 
+        <Button
+            android:layout_marginLeft="10dp"
+            style="@style/button_style"
+            android:text="Floating View"
+            android:id="@+id/floating_btn"/>
+
     </LinearLayout>
 </RelativeLayout>

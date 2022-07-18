@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             int countNum;
 
             if(countEt.getText().toString().equals("")) {
-                countNum = 150;
+                countNum = 1;
             }else{
                 countNum = Integer.parseInt(countEt.getText().toString());
             }

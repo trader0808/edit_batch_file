@@ -154,7 +154,8 @@
             android:layout_width="100dp"
             android:layout_height="200dp"
             android:id="@+id/preview_floating_tv"
-            android:background="@drawable/border_02"/>
+            android:background="@drawable/border_02"
+            android:textColor="@color/white"/>
 
 
     </LinearLayout>

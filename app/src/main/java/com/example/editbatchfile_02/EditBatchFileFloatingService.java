@@ -374,6 +374,11 @@ public class EditBatchFileFloatingService extends Service {
         }
     }
 
+    private void clearValueOnUsedParameters() {
+        previewTvContent = previewTvContent.substring(0,0);
+        ratioList.clear();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

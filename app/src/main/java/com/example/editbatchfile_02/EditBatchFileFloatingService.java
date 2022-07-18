@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class EditBatchFileFloatingService extends Service {
 
     private static final String TAG = "[Floating Tuner]";
@@ -38,6 +40,16 @@ public class EditBatchFileFloatingService extends Service {
     private Button generateBatchFloatingBtn;
     private Button minimizeViewBtn;
     private Button closeViewBtn;
+
+    private String previewTvContent = "";
+    private ArrayList<ArrayList<Long>> ratioList = new ArrayList<ArrayList<Long>>();
+
+    private ArrayList<Integer> ratioNum = new ArrayList<Integer>();
+    private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
+
+    private ArrayList<Integer> customRatio_02 = new ArrayList<Integer>();
+    private double middleNumWeight01 = 1.6;
+    private double middleNumWeight02 = 2.0;
 
     @Override
     public IBinder onBind(Intent intent) {

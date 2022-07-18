@@ -226,6 +226,112 @@ public class EditBatchFileFloatingService extends Service {
         });;
     }
 
+    private void calculateRatioList() {
+        int middleValue = Integer.parseInt(middleFloatingET.getText().toString());
+
+        if(ratioNum.size()!=0){
+            for(int i = 0; i < ratioNum.size(); i++) {
+                ratioList.add(MainActivity.Scaling.scaling_list(middleValue, ratioNum.get(i)));
+            }
+        }
+
+        if(customRatio.size()!=0){
+            for(int i = 0; i < customRatio.size(); i++) {
+                ratioList.add(MainActivity.Scaling.custom_scaling_list(middleValue, customRatio.get(i)));
+            }
+        }
+
+        if(customRatio_02.size()!=0){
+
+            int middleIndex = (int)(customRatio_02.size()/2);
+            int countNum;
+
+            if(countFloatingET.getText().toString().equals("")) {
+                countNum = 1;
+            }else{
+                countNum = Integer.parseInt(countFloatingET.getText().toString());
+            }
+
+            if(!weight01FloatingET.getText().toString().equals("")) {
+                middleNumWeight01 = Double.parseDouble(weight01FloatingET.getText().toString());
+            }
+
+            if(!weight02FloatingET.getText().toString().equals("")) {
+                middleNumWeight02 = Double.parseDouble(weight02FloatingET.getText().toString());
+            }
+
+            for(int j = 0; j < countNum; j++) {
+                for(int i = 0; i <customRatio_02.size();i++) {
+                    ratioList.add(MainActivity.Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight01), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                }
+            }
+
+            for(int j = 0; j < countNum; j++) {
+                for(int i = 0; i <customRatio_02.size();i++) {
+                    ratioList.add(MainActivity.Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight02), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                }
+            }
+        }
+    }
+
+    public static class Scaling {
+        public static ArrayList<Long> scaling_list(int middleValue, int ratio) {
+            ArrayList<Long> scale_list = new ArrayList<Long>();
+            scale_list.add((long)(middleValue * 0.1));
+            scale_list.add((long)(middleValue * 0.4));
+            scale_list.add((long)(middleValue * 0.7));
+            scale_list.add((long)(middleValue * 1));
+            scale_list.add((long)(middleValue * 1.3));
+            scale_list.add((long)(middleValue * 1.6));
+            scale_list.add((long)(middleValue * 1.9));
+
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
+            for( int i = 0; i < scale_list.size(); i++) {
+                long top = scale_list.get(i) * ratio;
+                long bot = (long)(scale_list.get(i) / ratio);
+                long middle = scale_list.get(i);
+
+                scale_list_buffer.add(bot);
+                scale_list_buffer.add(middle);
+                scale_list_buffer.add(top);
+            }
+
+            return scale_list_buffer;
+        }
+
+        public static ArrayList<Long> custom_scaling_list(int middleValue, ArrayList<Integer> custom_list) {
+            ArrayList<Long> scale_list = new ArrayList<Long>();
+            scale_list.add((long)(middleValue * 0.1));
+            scale_list.add((long)(middleValue * 0.4));
+            scale_list.add((long)(middleValue * 0.7));
+            scale_list.add((long)(middleValue * 1));
+            scale_list.add((long)(middleValue * 1.3));
+            scale_list.add((long)(middleValue * 1.6));
+            scale_list.add((long)(middleValue * 1.9));
+
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
+            for( int i = 0; i < scale_list.size(); i++) {
+                long top = scale_list.get(i) * (custom_list.get(2) / custom_list.get(1));
+                long bot = (long)(scale_list.get(i) / (custom_list.get(1) / custom_list.get(0)));
+                long middle = scale_list.get(i);
+
+                scale_list_buffer.add(bot);
+                scale_list_buffer.add(middle);
+                scale_list_buffer.add(top);
+            }
+
+            return scale_list_buffer;
+        }
+
+        public static ArrayList<Long> custom_scaling_list_02(int middleValue, int custom_list_02_ratio, int custom_list_02_middle_ratio) {
+
+            ArrayList<Long> scale_list_buffer = new ArrayList<Long>();
+            scale_list_buffer.add((long)((long) middleValue * (custom_list_02_ratio) / custom_list_02_middle_ratio));
+
+            return scale_list_buffer;
+        }
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

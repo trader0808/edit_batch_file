@@ -72,8 +72,20 @@ public class EditBatchFileFloatingService extends Service {
 
         implementFloatingContents();
         implementEvent ();
+        addRatioUserWant();
     }
 
+    private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
+        customRatio_02.add(1);
+        customRatio_02.add(4);
+        customRatio_02.add(8);
+        customRatio_02.add(16);
+        customRatio_02.add(32);
+        customRatio_02.add(64);
+        customRatio_02.add(128);
+        customRatio_02.add(256);
+    }
+    
     private void implementTuningGeneralPopup () {
         LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         tuningGeneralPopup = (ViewGroup) inflater.inflate(R.layout.floating_activity, null);

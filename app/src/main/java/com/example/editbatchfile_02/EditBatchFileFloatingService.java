@@ -10,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class EditBatchFileFloatingService extends Service {
 
@@ -23,6 +26,17 @@ public class EditBatchFileFloatingService extends Service {
     private ViewGroup tuningGeneralPopup;
     private WindowManager.LayoutParams tuningGeneralPopupLayoutParam;
     private WindowManager windowManager;
+
+    private TextView previewFloatingTV;
+    private EditText focusFloatingET;
+    private EditText isoFloatingET;
+    private EditText middleFloatingET;
+    private EditText countFloatingET;
+    private EditText weight01FloatingET;
+    private EditText weight02FloatingET;
+    private Button generateBatchFloatingBtn;
+    private Button minimizeViewBtn;
+    private Button closeViewBtn;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -43,6 +57,7 @@ public class EditBatchFileFloatingService extends Service {
 
         windowManager.addView(tuningGeneralPopup, tuningGeneralPopupLayoutParam);
 
+        implementFloatingContents();
         implementEvent ();
     }
 
@@ -63,6 +78,19 @@ public class EditBatchFileFloatingService extends Service {
 
     private void implementEvent () {
         implementEventForMovingPopup();
+    }
+
+    private void implementFloatingContents () {
+        previewFloatingTV = tuningGeneralPopup.findViewById(R.id.preview_floating_tv);
+        focusFloatingET = tuningGeneralPopup.findViewById(R.id.focus_floating_et);
+        isoFloatingET = tuningGeneralPopup.findViewById(R.id.iso_floating_et);
+        middleFloatingET = tuningGeneralPopup.findViewById(R.id.middle_floating_et);
+        countFloatingET = tuningGeneralPopup.findViewById(R.id.count_floating_et);
+        weight01FloatingET = tuningGeneralPopup.findViewById(R.id.weight01_floating_et);
+        weight02FloatingET = tuningGeneralPopup.findViewById(R.id.weight02_floating_et);
+        generateBatchFloatingBtn = tuningGeneralPopup.findViewById(R.id.generate_floating_btn);
+        minimizeViewBtn = tuningGeneralPopup.findViewById(R.id.min_floating_btn);
+        closeViewBtn = tuningGeneralPopup.findViewById(R.id.close_floating_btn);
     }
 
     private void implementEventForMovingPopup () {

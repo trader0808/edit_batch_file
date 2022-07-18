@@ -133,7 +133,7 @@
                 <Button
                     style="@style/flaoting_button_style"
                     android:text="Generate\nBatch"
-                    android:id="@+id/geenrate_floating_btn"/>
+                    android:id="@+id/generate_floating_btn"/>
 
                 <Button
                     android:layout_marginLeft="10dp"

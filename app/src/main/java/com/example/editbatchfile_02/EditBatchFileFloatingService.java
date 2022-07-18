@@ -1,5 +1,6 @@
 package com.example.editbatchfile_02;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
@@ -79,6 +80,7 @@ public class EditBatchFileFloatingService extends Service {
     private void implementEvent () {
         implementEventForMovingPopup();
         implementEventForCloseButton();
+        implementKeyboardPopEvent();
     }
 
     private void implementFloatingContents () {
@@ -124,6 +126,80 @@ public class EditBatchFileFloatingService extends Service {
                 onDestroy();
             }
         });
+    }
+
+    private void implementKeyboardPopEvent () {
+        focusFloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                focusFloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });
+
+        isoFloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isoFloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });
+
+        middleFloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                middleFloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });
+
+        countFloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                countFloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });
+
+        weight01FloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                weight01FloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });
+
+        weight02FloatingET.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                weight02FloatingET.setCursorVisible(true);
+                WindowManager.LayoutParams floatWindowLayoutParamUpdateFlag = tuningGeneralPopupLayoutParam;
+                floatWindowLayoutParamUpdateFlag.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                windowManager.updateViewLayout(tuningGeneralPopup, floatWindowLayoutParamUpdateFlag);
+                return false;
+            }
+        });;
     }
 
     @Override

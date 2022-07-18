@@ -58,4 +58,16 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="POPUP_LAYOUT">
+        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+
+    <style name="POPUP_LAYOUT_TRANSLUCENCE" parent="POPUP_LAYOUT">
+        <item name="android:background">@drawable/border_translucence</item>
+    </style>
 </resources>

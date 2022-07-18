@@ -85,7 +85,7 @@ public class EditBatchFileFloatingService extends Service {
         customRatio_02.add(128);
         customRatio_02.add(256);
     }
-    
+
     private void implementTuningGeneralPopup () {
         LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         tuningGeneralPopup = (ViewGroup) inflater.inflate(R.layout.floating_activity, null);
@@ -234,5 +234,9 @@ public class EditBatchFileFloatingService extends Service {
         if (windowManager != null) {
             windowManager.removeView(tuningGeneralPopup);
         }
+    }
+
+    private boolean checkIfFullET(EditText editText) {
+        return !editText.getText().toString().equals("");
     }
 }

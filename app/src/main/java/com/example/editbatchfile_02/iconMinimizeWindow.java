@@ -25,6 +25,12 @@ public class iconMinimizeWindow extends Service {
     private WindowManager windowManager;
     private int LAYOUT_TYPE;
     private Button iconMaximizeBtn;
+    private String focus_value;
+    private String iso_value;
+    private String shutter_value;
+    private String count_value;
+    private String weight_01_value;
+    private String weight_02_value;
 
     @Nullable
     @Override

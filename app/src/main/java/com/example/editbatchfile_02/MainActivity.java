@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ArrayList<Integer>> customRatio = new ArrayList<ArrayList<Integer>>();
 
     private ArrayList<Integer> customRatio_02 = new ArrayList<Integer>();
-    private double middleNumWeight01 = 1.6;
-    private double middleNumWeight02 = 2.0;
+    private double middleNumWeight01 = 1.1;
+    private double middleNumWeight02 = 2.2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addRatioUserWant() {  // 최소, 중간, 최대 값이 비율이 일정하면 ratioNum에 할당. 그렇지 않으면 customRatio에 할당
         customRatio_02.add(1);
+        customRatio_02.add(2);
         customRatio_02.add(4);
         customRatio_02.add(8);
         customRatio_02.add(16);
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         customRatio_02.add(64);
         customRatio_02.add(128);
         customRatio_02.add(256);
+        customRatio_02.add(512);
     }
 
     private void requestMediaPermission() {
@@ -151,21 +153,21 @@ public class MainActivity extends AppCompatActivity {
 
             if(!weight01Et.getText().toString().equals("")) {
                 middleNumWeight01 = Double.parseDouble(weight01Et.getText().toString());
+
+                for(int j = 0; j < countNum; j++) {
+                    for(int i = 0; i <customRatio_02.size();i++) {
+                        ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight01), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    }
+                }
             }
 
             if(!weight02Et.getText().toString().equals("")) {
                 middleNumWeight02 = Double.parseDouble(weight02Et.getText().toString());
-            }
 
-            for(int j = 0; j < countNum; j++) {
-                for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight01), customRatio_02.get(i), customRatio_02.get(middleIndex)));
-                }
-            }
-
-            for(int j = 0; j < countNum; j++) {
-                for(int i = 0; i <customRatio_02.size();i++) {
-                    ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight02), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                for(int j = 0; j < countNum; j++) {
+                    for(int i = 0; i <customRatio_02.size();i++) {
+                        ratioList.add(Scaling.custom_scaling_list_02((int)(middleValue * middleNumWeight02), customRatio_02.get(i), customRatio_02.get(middleIndex)));
+                    }
                 }
             }
         }

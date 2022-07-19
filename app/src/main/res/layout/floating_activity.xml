@@ -110,7 +110,8 @@
                     android:layout_width="70dp"
                     android:layout_marginLeft="30dp"
                     android:id="@+id/weight01_floating_et"
-                    android:nextFocusDown="@id/weight02_floating_et"/>
+                    android:nextFocusDown="@id/weight02_floating_et"
+                    android:text="1.1"/>
 
                 <EditText
                     style="@style/flaotingET"

@@ -106,7 +106,8 @@
             android:layout_marginLeft="30dp"
             android:inputType="none"
             android:id="@+id/weight01_et"
-            android:nextFocusDown="@id/weight02_et"/>
+            android:nextFocusDown="@id/weight02_et"
+            android:text="1.1"/>
 
         <EditText
             style="@style/batchET"

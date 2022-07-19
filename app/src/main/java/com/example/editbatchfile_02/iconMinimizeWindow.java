@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.IBinder;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,19 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-
-import com.example.editbatchfile_02.EditBatchFileFloatingService;
-import com.example.editbatchfile_02.R;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 public class iconMinimizeWindow extends Service {
 
@@ -38,7 +24,7 @@ public class iconMinimizeWindow extends Service {
     private WindowManager.LayoutParams floatWindowLayoutParam;
     private WindowManager windowManager;
     private int LAYOUT_TYPE;
-    private Button iconMinimizeBtn;
+    private Button iconMaximizeBtn;
 
     @Nullable
     @Override
@@ -58,7 +44,7 @@ public class iconMinimizeWindow extends Service {
         LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         floatView = (ViewGroup) inflater.inflate(R.layout.floating_layout_02, null);
 
-        iconMinimizeBtn = floatView.findViewById(R.id.iconMinimizeBtn2);
+        iconMaximizeBtn = floatView.findViewById(R.id.iconMinimizeBtn2);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LAYOUT_TYPE = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
@@ -80,7 +66,7 @@ public class iconMinimizeWindow extends Service {
 
         windowManager.addView(floatView, floatWindowLayoutParam);
 
-        iconMinimizeBtn.setOnClickListener(new View.OnClickListener() {
+        iconMaximizeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopSelf();

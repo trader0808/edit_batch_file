@@ -67,9 +67,9 @@ public class iconMinimizeWindow extends Service {
         }
 
         floatWindowLayoutParam = new WindowManager.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                (int) (300),
+                (int) (300),
+                LAYOUT_TYPE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT
         );
@@ -86,7 +86,8 @@ public class iconMinimizeWindow extends Service {
                 stopSelf();
                 //The window is removed from the screen
                 windowManager.removeView(floatView);
-                startService(new Intent(iconMinimizeWindow.this, EditBatchFileFloatingService.class));
+                Intent intent = new Intent(iconMinimizeWindow.this, EditBatchFileFloatingService.class);
+                startService(intent);
             }
         });
 

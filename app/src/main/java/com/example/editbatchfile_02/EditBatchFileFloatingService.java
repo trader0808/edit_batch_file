@@ -167,7 +167,9 @@ public class EditBatchFileFloatingService extends Service {
             public void onClick(View view) {
                 stopSelf();
                 windowManager.removeView(tuningGeneralPopup);
-                startService(new Intent(EditBatchFileFloatingService.this, iconMinimizeWindow.class));
+                Intent intent = new Intent(EditBatchFileFloatingService.this, iconMinimizeWindow.class);
+                Log.d(TAG, "minimize button clicked");
+                startService(intent);
             }
         });
     }

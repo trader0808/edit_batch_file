@@ -70,8 +70,8 @@ public class iconMinimizeWindow extends Service {
         );
 
         floatWindowLayoutParam.gravity = Gravity.CENTER;
-        floatWindowLayoutParam.x = 0;
-        floatWindowLayoutParam.y = 0;
+        floatWindowLayoutParam.x = 800;
+        floatWindowLayoutParam.y = 800;
 
         windowManager.addView(floatView, floatWindowLayoutParam);
 

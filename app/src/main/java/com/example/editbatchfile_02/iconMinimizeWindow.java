@@ -122,6 +122,22 @@ public class iconMinimizeWindow extends Service {
                 return false;
             }
         });
+
+        iconMaximizeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopSelf();
+                windowManager.removeView(floatView);
+                Intent intent = new Intent(iconMinimizeWindow.this, EditBatchFileFloatingService.class);
+                intent.putExtra("focus_value", focus_value);
+                intent.putExtra("iso_value", iso_value);
+                intent.putExtra("shutter_value", shutter_value);
+                intent.putExtra("count_value", count_value);
+                intent.putExtra("weight_01_value", weight_01_value);
+                intent.putExtra("weight_02_value", weight_02_value);
+                startService(intent);
+            }
+        });
     }
 
     //It is called when stopService() method is called in MainActivity

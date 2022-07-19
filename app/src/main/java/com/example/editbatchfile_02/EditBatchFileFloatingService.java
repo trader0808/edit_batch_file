@@ -434,4 +434,20 @@ public class EditBatchFileFloatingService extends Service {
     private boolean checkIfFullET(EditText editText) {
         return !editText.getText().toString().equals("");
     }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG,"onStartCommand() 호출");
+        if(intent == null){
+            return Service.START_STICKY;
+        }else {
+            focusFloatingET.setText(intent.getStringExtra("focus_value"));
+            isoFloatingET.setText(intent.getStringExtra("iso_value"));
+            middleFloatingET.setText(intent.getStringExtra("shutter_value"));
+            countFloatingET.setText(intent.getStringExtra("count_value"));
+            weight01FloatingET.setText(intent.getStringExtra("weight_01_value"));
+            weight02FloatingET.setText(intent.getStringExtra("weight_02_value"));
+        }
+        return START_REDELIVER_INTENT;
+    }
 }

@@ -5,18 +5,18 @@
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:background="@drawable/minimize_border"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <Button
         android:id="@+id/iconMinimizeBtn2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="#00ff0000"
-        android:text="MS"
+        android:text="M"
         android:gravity="center"
-        android:textSize="10sp"
-        android:layout_marginTop="35dp"
-        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:layout_gravity="center|center_vertical"
         android:textColor="@color/backgroundBlue"
         />
 

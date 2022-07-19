@@ -445,7 +445,11 @@ public class EditBatchFileFloatingService extends Service {
             isoFloatingET.setText(intent.getStringExtra("iso_value"));
             middleFloatingET.setText(intent.getStringExtra("shutter_value"));
             countFloatingET.setText(intent.getStringExtra("count_value"));
-            weight01FloatingET.setText(intent.getStringExtra("weight_01_value"));
+            if(intent.getStringExtra("weight_01_value") == null) {
+                weight01FloatingET.setText(String.valueOf(middleNumWeight01));
+            } else {
+                weight01FloatingET.setText(intent.getStringExtra("weight_01_value"));
+            }
             weight02FloatingET.setText(intent.getStringExtra("weight_02_value"));
         }
         return START_REDELIVER_INTENT;

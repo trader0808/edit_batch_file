@@ -6,6 +6,7 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+
+import java.util.concurrent.BlockingDeque;
 
 public class iconMinimizeWindow extends Service {
 
@@ -129,5 +132,20 @@ public class iconMinimizeWindow extends Service {
         stopSelf();
         //Window is removed from the screen
         windowManager.removeView(floatView);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if(intent == null){
+            return Service.START_STICKY;
+        }else {
+            focus_value = intent.getStringExtra("focus_value");
+            iso_value = intent.getStringExtra("iso_value");
+            shutter_value = intent.getStringExtra("shutter_value");
+            count_value = intent.getStringExtra("count_value");
+            weight_01_value = intent.getStringExtra("weight_01_value");
+            weight_02_value = intent.getStringExtra("weight_02_value");
+        }
+        return START_REDELIVER_INTENT;
     }
 }

@@ -168,6 +168,12 @@ public class EditBatchFileFloatingService extends Service {
                 stopSelf();
                 windowManager.removeView(tuningGeneralPopup);
                 Intent intent = new Intent(EditBatchFileFloatingService.this, iconMinimizeWindow.class);
+                intent.putExtra("focus_value", focusFloatingET.getText().toString());
+                intent.putExtra("iso_value", isoFloatingET.getText().toString());
+                intent.putExtra("shutter_value", middleFloatingET.getText().toString());
+                intent.putExtra("count_value", countFloatingET.getText().toString());
+                intent.putExtra("weight_01_value", weight01FloatingET.getText().toString());
+                intent.putExtra("weight_02_value", weight02FloatingET.getText().toString());
                 Log.d(TAG, "minimize button clicked");
                 startService(intent);
             }
